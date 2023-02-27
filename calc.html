@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <style>
+      #main {
+        width: 300px;
+        height: 280px;
+        background-color: black;
+      }
+      #output {
+        width: 96%;
+        height: 50px;
+        color: blue;
+        background-color: silver;
+      }
+      ::placeholder {
+        color: darkblue;
+      }
+      input {
+        width: 20%;
+        height: 40px;
+        font-size: 20px;
+        margin: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <form id="f">
+        <input type="text" id="output" placeholder="0" /> <br />
+        <input type="button" value="1" onclick="f.output.value+=1" />
+        <input type="button" value="2" onclick="f.output.value+=2" />
+        <input type="button" value="3" onclick="f.output.value+=3" />
+        <input type="button" value="+" onclick="matOperation('+')" />
+        <br />
+        <input type="button" value="4" onclick="f.output.value+=4" />
+        <input type="button" value="5" onclick="f.output.value+=5" />
+        <input type="button" value="6" onclick="f.output.value+=6" />
+        <input type="button" value="-" onclick="matOperation('-')" />
+        <br />
+        <input type="button" value="7" onclick="f.output.value+=9" />
+        <input type="button" value="8" onclick="f.output.value+=8" />
+        <input type="button" value="9" onclick="f.output.value+=9" />
+        <input type="button" value="/" onclick="matOperation('/')" />
+        <br />
+        <input type="button" value="c" onclick="f.output.value=''" />
+        <input type="button" value="0" onclick="f.output.value+=0" />
+        <input
+          type="button"
+          value="="
+          onclick="f.output.value=eval(f.output.value)"
+        />
+        <input type="button" value="x" onclick="matOperation('*')" />
+      </form>
+    </div>
+
+    <script>
+      function matOperation(symbol) {
+        var act = f.output.value;
+        var lastChar = act.charAt(act.length - 1);
+
+        if (
+          lastChar == "+" ||
+          lastChar == "-" ||
+          lastChar == "/" ||
+          lastChar == "*"
+        ) {
+          f.output.value = act.substring(0, act.length - 1);
+        }
+        f.output.value += symbol;
+      }
+    </script>
+  </body>
+</html>
